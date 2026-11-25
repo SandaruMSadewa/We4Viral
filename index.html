@@ -53,14 +53,14 @@
     </script>
 
     <style>
-        /* අභිරුචි CSS (Custom CSS) */
+        /* Custom CSS */
         body {
             background-color: #050505;
             color: #ffffff;
             overflow-x: hidden;
         }
         
-        /* නවීන Scrollbar එකක් */
+        /* Modern Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -88,7 +88,7 @@
             background-image: linear-gradient(to right, #8b5cf6, #ec4899);
         }
 
-        /* බොත්තම් Hover Effect */
+        /* Button Hover Effect */
         .btn-hover-effect {
             transition: all 0.3s ease;
         }
@@ -96,25 +96,43 @@
             transform: translateY(-3px);
             box-shadow: 0 10px 20px -10px rgba(236, 72, 153, 0.5);
         }
+
+        /* Infinite Marquee Animation for Clients */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 65s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+        .marquee-mask {
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
     </style>
 </head>
 <body class="antialiased relative selection:bg-secondary selection:text-white">
 
-    <!-- පසුබිම් ආලෝකකරණය (Background Glow Effects) -->
+    <!-- Background Glow Effects -->
     <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
         <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-[128px] opacity-30 animate-blob"></div>
         <div class="absolute top-[20%] right-[-10%] w-96 h-96 bg-secondary rounded-full mix-blend-multiply filter blur-[128px] opacity-30 animate-blob animation-delay-2000"></div>
         <div class="absolute bottom-[-20%] left-[20%] w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-30 animate-blob animation-delay-4000"></div>
     </div>
 
-    <!-- Navigation Bar (මෙනුව) -->
+    <!-- Navigation Bar -->
     <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="#home" class="flex items-center gap-3">
-                        <img src="WeForViral Logo.jpg" alt="WEFORVIRAL Logo" class="h-10 w-auto invert mix-blend-screen">
+                        <img src="WeForViral Logo.jpg" onerror="this.style.display='none'" alt="WEFORVIRAL Logo" class="h-10 w-auto invert mix-blend-screen">
                         <span class="text-2xl font-bold tracking-tighter">
                             WEFOR<span class="text-gradient">VIRAL</span>
                         </span>
@@ -125,6 +143,7 @@
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="#home" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Home</a>
                     <a href="#services" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Services</a>
+                    <a href="#projects" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Projects</a>
                     <a href="#clients" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Clients</a>
                     <a href="#feedbacks" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Testimonials</a>
                     <a href="#team" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Team</a>
@@ -145,6 +164,7 @@
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#home" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md">Home</a>
                 <a href="#services" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md">Services</a>
+                <a href="#projects" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md">Projects</a>
                 <a href="#clients" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md">Clients</a>
                 <a href="#feedbacks" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md">Testimonials</a>
                 <a href="#team" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md">Team</a>
@@ -153,7 +173,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section (මුල් පිටුව) -->
+    <!-- Hero Section -->
     <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <span data-aos="fade-down" class="inline-block py-1 px-3 rounded-full bg-gray-800/50 border border-gray-700 text-sm text-gray-300 mb-6 backdrop-blur-sm">
@@ -201,7 +221,7 @@
         </div>
     </section>
 
-    <!-- Services Section (සේවාවන්) -->
+    <!-- Services Section -->
     <section id="services" class="py-24 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -267,66 +287,393 @@
         </div>
     </section>
 
-    <!-- Our Clients Section (සේවාදායකයින්) -->
-    <section id="clients" class="py-20 bg-darkCard/50 border-y border-gray-800/50">
+    <!-- Our Clients Section -->
+    <section id="clients" class="py-20 bg-darkCard/50 border-y border-gray-800/50 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 data-aos="fade-up" class="text-2xl md:text-3xl font-bold mb-10 text-gray-300">Clients Who <span class="text-gradient">Trust Us</span></h2>
-            
-            <div data-aos="zoom-in" class="flex flex-wrap justify-center items-center gap-10 md:gap-16">
+            <h2 data-aos="fade-up" class="text-2xl md:text-3xl font-bold mb-12 text-gray-300">Clients Who <span class="text-gradient">Trust Us</span></h2>
+        </div>
+        
+        <!-- Horizontal Marquee Container -->
+        <div data-aos="fade-up" class="relative w-full overflow-hidden marquee-mask py-4">
+            <div class="animate-marquee flex items-center gap-10 md:gap-14">
+                <!-- Original Set of 21 Clients -->
                 <!-- Client 1 -->
-                <div class="flex flex-col items-center group cursor-pointer">
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0">
                     <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-primary transition-colors mb-3">
-                        <img src="Chanuka Mora.jpg" alt="Chanuka Mora" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                        <img src="Chanuka Mora.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=CM'" alt="Chanuka Mora" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                     </div>
-                    <p class="font-semibold text-gray-300 group-hover:text-white transition-colors">Chanuka Mora</p>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Chanuka Mora</p>
                 </div>
                 <!-- Client 2 -->
-                <div class="flex flex-col items-center group cursor-pointer">
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0">
                     <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-secondary transition-colors mb-3">
-                        <img src="Dimi3.jpg" alt="Dimi3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                        <img src="Dimi3.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=D3'" alt="Dimi3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                     </div>
-                    <p class="font-semibold text-gray-300 group-hover:text-white transition-colors">Dimi3</p>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Dimi3</p>
                 </div>
                 <!-- Client 3 -->
-                <div class="flex flex-col items-center group cursor-pointer">
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0">
                     <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-blue-500 transition-colors mb-3">
-                        <img src="Dinesh Gamage.jpg" alt="Dinesh Gamage" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                        <img src="Dinesh Gamage.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=DG'" alt="Dinesh Gamage" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                     </div>
-                    <p class="font-semibold text-gray-300 group-hover:text-white transition-colors">Dinesh Gamage</p>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Dinesh Gamage</p>
                 </div>
                 <!-- Client 4 -->
-                <div class="flex flex-col items-center group cursor-pointer">
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0">
                     <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-green-500 transition-colors mb-3">
-                        <img src="HotChocolate.jpg" alt="Hot Chocolate" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                        <img src="HotChocolate.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=HC'" alt="Hot Chocolate" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                     </div>
-                    <p class="font-semibold text-gray-300 group-hover:text-white transition-colors">Hot Chocolate</p>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Hot Chocolate</p>
                 </div>
                 <!-- Client 5 -->
-                <div class="flex flex-col items-center group cursor-pointer">
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0">
                     <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-yellow-500 transition-colors mb-3">
-                        <img src="PraveenG.jpg" alt="Praveen G" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                        <img src="PraveenG.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=PG'" alt="Praveen G" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                     </div>
-                    <p class="font-semibold text-gray-300 group-hover:text-white transition-colors">Praveen G</p>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Praveen G</p>
                 </div>
                 <!-- Client 6 -->
-                <div class="flex flex-col items-center group cursor-pointer">
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0">
                     <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-purple-500 transition-colors mb-3">
-                        <img src="RaviRoyster.jpg" alt="Ravi Royster" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                        <img src="RaviRoyster.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=RR'" alt="Ravi Royster" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                     </div>
-                    <p class="font-semibold text-gray-300 group-hover:text-white transition-colors">Ravi Royster</p>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Ravi Royster</p>
                 </div>
                 <!-- Client 7 -->
-                <div class="flex flex-col items-center group cursor-pointer">
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0">
                     <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-red-500 transition-colors mb-3">
-                        <img src="YakaCrew.jpg" alt="Yaka Crew" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                        <img src="YakaCrew.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=YC'" alt="Yaka Crew" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                     </div>
-                    <p class="font-semibold text-gray-300 group-hover:text-white transition-colors">Yaka Crew</p>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Yaka Crew</p>
+                </div>
+                <!-- Client 8 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-primary transition-colors mb-3">
+                        <img src="Vinuja Tharuksha.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=VT'" alt="Vinuja Tharuksha" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Vinuja Tharuksha</p>
+                </div>
+                <!-- Client 9 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-secondary transition-colors mb-3">
+                        <img src="Tehan Perera.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=TP'" alt="Tehan Perera" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Tehan Perera</p>
+                </div>
+                <!-- Client 10 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-blue-500 transition-colors mb-3">
+                        <img src="Nilan Hettiarachchi.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=NH'" alt="Nilan Hettiarachchi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Nilan Hettiarachchi</p>
+                </div>
+                <!-- Client 11 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-green-500 transition-colors mb-3">
+                        <img src="Nisala Kavinda.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=NK'" alt="Nisala Kavinda" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Nisala Kavinda</p>
+                </div>
+                <!-- Client 12 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-yellow-500 transition-colors mb-3">
+                        <img src="Nadeemal Perera.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=NP'" alt="Nadeemal Perera" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Nadeemal Perera</p>
+                </div>
+                <!-- Client 13 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-pink-500 transition-colors mb-3">
+                        <img src="Falan Andrea.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=FA'" alt="Falan Andrea" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Falan Andrea</p>
+                </div>
+                <!-- Client 14 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-purple-500 transition-colors mb-3">
+                        <img src="Mihindu Ariyarathne.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=MA'" alt="Mihindu Ariyarathne" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Mihindu Ariyarathne</p>
+                </div>
+                <!-- Client 15 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-rose-500 transition-colors mb-3">
+                        <img src="Surenie.png" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=SU'" alt="Surenie" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Surenie</p>
+                </div>
+                <!-- Client 16 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-teal-500 transition-colors mb-3">
+                        <img src="Romesh Sugathapala.png" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=RS'" alt="Romesh Sugathapala" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Romesh Sugathapala</p>
+                </div>
+                <!-- Client 17 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-indigo-500 transition-colors mb-3">
+                        <img src="Pasan Liyanage.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=PL'" alt="Pasan Liyanage" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Pasan Liyanage</p>
+                </div>
+                <!-- Client 18 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-blue-400 transition-colors mb-3">
+                        <img src="Junior Crysto.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=JC'" alt="Junior Crysto" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Junior Crysto</p>
+                </div>
+                <!-- Client 19 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-amber-500 transition-colors mb-3">
+                        <img src="Shanilka Fernando.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=SF'" alt="Shanilka Fernando" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Shanilka Fernando</p>
+                </div>
+                <!-- Client 20 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-cyan-500 transition-colors mb-3">
+                        <img src="Pop Punk.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=PP'" alt="Pop Punk" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Pop Punk</p>
+                </div>
+                <!-- Client 21 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-pink-400 transition-colors mb-3">
+                        <img src="Shanika Arsecularatne.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=SA'" alt="Shanika Arsecularatne" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Shanika Arsecularatne</p>
+                </div>
+
+                <!-- Duplicated Set for Seamless Infinite Loop -->
+                <!-- Client 1 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0" aria-hidden="true">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-primary transition-colors mb-3">
+                        <img src="Chanuka Mora.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=CM'" alt="Chanuka Mora" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Chanuka Mora</p>
+                </div>
+                <!-- Client 2 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0" aria-hidden="true">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-secondary transition-colors mb-3">
+                        <img src="Dimi3.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=D3'" alt="Dimi3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Dimi3</p>
+                </div>
+                <!-- Client 3 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0" aria-hidden="true">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-blue-500 transition-colors mb-3">
+                        <img src="Dinesh Gamage.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=DG'" alt="Dinesh Gamage" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Dinesh Gamage</p>
+                </div>
+                <!-- Client 4 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0" aria-hidden="true">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-green-500 transition-colors mb-3">
+                        <img src="HotChocolate.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=HC'" alt="Hot Chocolate" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Hot Chocolate</p>
+                </div>
+                <!-- Client 5 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0" aria-hidden="true">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-yellow-500 transition-colors mb-3">
+                        <img src="PraveenG.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=PG'" alt="Praveen G" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Praveen G</p>
+                </div>
+                <!-- Client 6 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0" aria-hidden="true">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-purple-500 transition-colors mb-3">
+                        <img src="RaviRoyster.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=RR'" alt="Ravi Royster" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Ravi Royster</p>
+                </div>
+                <!-- Client 7 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0" aria-hidden="true">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-red-500 transition-colors mb-3">
+                        <img src="YakaCrew.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=YC'" alt="Yaka Crew" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Yaka Crew</p>
+                </div>
+                <!-- Client 8 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0" aria-hidden="true">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-primary transition-colors mb-3">
+                        <img src="Vinuja Tharuksha.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=VT'" alt="Vinuja Tharuksha" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Vinuja Tharuksha</p>
+                </div>
+                <!-- Client 9 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0" aria-hidden="true">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-secondary transition-colors mb-3">
+                        <img src="Tehan Perera.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=TP'" alt="Tehan Perera" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Tehan Perera</p>
+                </div>
+                <!-- Client 10 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0" aria-hidden="true">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-blue-500 transition-colors mb-3">
+                        <img src="Nilan Hettiarachchi.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=NH'" alt="Nilan Hettiarachchi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Nilan Hettiarachchi</p>
+                </div>
+                <!-- Client 11 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0" aria-hidden="true">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-green-500 transition-colors mb-3">
+                        <img src="Nisala Kavinda.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=NK'" alt="Nisala Kavinda" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Nisala Kavinda</p>
+                </div>
+                <!-- Client 12 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0" aria-hidden="true">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-yellow-500 transition-colors mb-3">
+                        <img src="Nadeemal Perera.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=NP'" alt="Nadeemal Perera" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Nadeemal Perera</p>
+                </div>
+                <!-- Client 13 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0" aria-hidden="true">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-pink-500 transition-colors mb-3">
+                        <img src="Falan Andrea.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=FA'" alt="Falan Andrea" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Falan Andrea</p>
+                </div>
+                <!-- Client 14 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0" aria-hidden="true">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-purple-500 transition-colors mb-3">
+                        <img src="Mihindu Ariyarathne.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=MA'" alt="Mihindu Ariyarathne" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Mihindu Ariyarathne</p>
+                </div>
+                <!-- Client 15 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0" aria-hidden="true">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-rose-500 transition-colors mb-3">
+                        <img src="Surenie.png" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=SU'" alt="Surenie" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Surenie</p>
+                </div>
+                <!-- Client 16 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0" aria-hidden="true">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-teal-500 transition-colors mb-3">
+                        <img src="Romesh Sugathapala.png" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=RS'" alt="Romesh Sugathapala" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Romesh Sugathapala</p>
+                </div>
+                <!-- Client 17 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0" aria-hidden="true">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-indigo-500 transition-colors mb-3">
+                        <img src="Pasan Liyanage.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=PL'" alt="Pasan Liyanage" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Pasan Liyanage</p>
+                </div>
+                <!-- Client 18 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0" aria-hidden="true">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-blue-400 transition-colors mb-3">
+                        <img src="Junior Crysto.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=JC'" alt="Junior Crysto" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Junior Crysto</p>
+                </div>
+                <!-- Client 19 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0" aria-hidden="true">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-amber-500 transition-colors mb-3">
+                        <img src="Shanilka Fernando.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=SF'" alt="Shanilka Fernando" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Shanilka Fernando</p>
+                </div>
+                <!-- Client 20 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0" aria-hidden="true">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-cyan-500 transition-colors mb-3">
+                        <img src="Pop Punk.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=PP'" alt="Pop Punk" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Pop Punk</p>
+                </div>
+                <!-- Client 21 -->
+                <div class="flex flex-col items-center group cursor-pointer w-28 flex-shrink-0" aria-hidden="true">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-700 group-hover:border-pink-400 transition-colors mb-3">
+                        <img src="Shanika Arsecularatne.jpg" onerror="this.src='https://placehold.co/150x150/1f2937/ffffff?text=SA'" alt="Shanika Arsecularatne" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <p class="font-semibold text-sm text-gray-300 group-hover:text-white transition-colors text-center">Shanika Arsecularatne</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Customer Feedbacks Section (පාරිභෝගික අදහස්) -->
+    <!-- Our Recent Projects Section -->
+    <section id="projects" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 data-aos="fade-up" class="text-3xl md:text-5xl font-bold mb-4">Our Recent <span class="text-gradient">Projects</span></h2>
+                <p data-aos="fade-up" data-aos-delay="100" class="text-gray-400 max-w-2xl mx-auto">Explore our latest viral campaigns, music promotions, and creative video productions.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project Playlist 1 -->
+                <div data-aos="fade-up" data-aos-delay="100" class="glass p-5 rounded-3xl border border-gray-800/80 hover:border-primary/50 transition-all duration-300 group">
+                    <div class="aspect-video w-full rounded-2xl overflow-hidden bg-black/60 mb-5 shadow-lg">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PL7CTLGgVAAWG_3hnyzBiCJNAWJ5btI2vL" title="Project Playlist 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="flex items-center justify-between px-2">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-primary">Campaign Showcase</span>
+                            <h3 class="text-lg font-bold text-white mt-1">Viral Music & Video Series 01</h3>
+                        </div>
+                        <a href="https://youtube.com/playlist?list=PL7CTLGgVAAWG_3hnyzBiCJNAWJ5btI2vL&si=8eeAVOvExQoNfjPU" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-red-600 transition-colors" title="Open in YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Playlist 2 -->
+                <div data-aos="fade-up" data-aos-delay="200" class="glass p-5 rounded-3xl border border-gray-800/80 hover:border-secondary/50 transition-all duration-300 group">
+                    <div class="aspect-video w-full rounded-2xl overflow-hidden bg-black/60 mb-5 shadow-lg">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PL7CTLGgVAAWERPoz9S7cf0vtEGeNKFiMq" title="Project Playlist 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="flex items-center justify-between px-2">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-secondary">Campaign Showcase</span>
+                            <h3 class="text-lg font-bold text-white mt-1">Trending Promotions Series 02</h3>
+                        </div>
+                        <a href="https://youtube.com/playlist?list=PL7CTLGgVAAWERPoz9S7cf0vtEGeNKFiMq&si=PxBCVnMR6UKxEK-e" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-red-600 transition-colors" title="Open in YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Playlist 3 -->
+                <div data-aos="fade-up" data-aos-delay="300" class="glass p-5 rounded-3xl border border-gray-800/80 hover:border-blue-500/50 transition-all duration-300 group">
+                    <div class="aspect-video w-full rounded-2xl overflow-hidden bg-black/60 mb-5 shadow-lg">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PL7CTLGgVAAWGO10ZP0KOutzdgeA_s881h" title="Project Playlist 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="flex items-center justify-between px-2">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-blue-400">Campaign Showcase</span>
+                            <h3 class="text-lg font-bold text-white mt-1">Featured Artist Releases 03</h3>
+                        </div>
+                        <a href="https://youtube.com/playlist?list=PL7CTLGgVAAWGO10ZP0KOutzdgeA_s881h&si=FJqdEN0BGk4hCHrH" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-red-600 transition-colors" title="Open in YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Playlist 4 -->
+                <div data-aos="fade-up" data-aos-delay="400" class="glass p-5 rounded-3xl border border-gray-800/80 hover:border-teal-500/50 transition-all duration-300 group">
+                    <div class="aspect-video w-full rounded-2xl overflow-hidden bg-black/60 mb-5 shadow-lg">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PL7CTLGgVAAWHLpk9NwbR3N9e4mu63nYJ_" title="Project Playlist 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="flex items-center justify-between px-2">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-teal-400">Campaign Showcase</span>
+                            <h3 class="text-lg font-bold text-white mt-1">Digital Media Highlights 04</h3>
+                        </div>
+                        <a href="https://youtube.com/playlist?list=PL7CTLGgVAAWHLpk9NwbR3N9e4mu63nYJ_&si=CMgmoo4-T1YvQGpV" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-red-600 transition-colors" title="Open in YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Feedbacks Section -->
     <section id="feedbacks" class="py-24 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -386,7 +733,7 @@
         </div>
     </section>
 
-    <!-- Our Team Section (අපගේ කණ්ඩායම) -->
+    <!-- Our Team Section -->
     <section id="team" class="py-24 bg-darkCard/30 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -395,14 +742,12 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <!-- Team Member 1 -->
-                <div data-aos="fade-up" data-aos-delay="100" class="group relative rounded-3xl overflow-hidden cursor-pointer">
-                    <div class="aspect-w-3 aspect-h-4 bg-gray-800">
-                        <img src="Kelum Madusanka.jpg" alt="Kelum Madusanka" class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100">
-                    </div>
+                <!-- Team Member 1 (Left) -->
+                <div data-aos="fade-up" data-aos-delay="100" class="group relative rounded-3xl overflow-hidden cursor-pointer h-96">
+                    <img src="Kelum Madusanka.jpg" onerror="this.src='https://placehold.co/400x500/1f2937/ffffff?text=Kelum+Madusanka'" alt="Kelum Madusanka" class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                         <h3 class="text-xl font-bold text-white">Kelum Madusanka</h3>
-                        <p class="text-secondary text-sm font-medium mb-3">Head of Marketing</p>
+                        <p class="text-secondary text-sm font-medium mb-3">CEO</p>
                         <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
                             <a href="#" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-secondary transition-colors"><i class="fab fa-linkedin-in text-sm"></i></a>
                             <a href="#" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-secondary transition-colors"><i class="fab fa-instagram text-sm"></i></a>
@@ -410,14 +755,12 @@
                     </div>
                 </div>
 
-                <!-- Team Member 2 -->
-                <div data-aos="fade-up" data-aos-delay="200" class="group relative rounded-3xl overflow-hidden cursor-pointer">
-                    <div class="aspect-w-3 aspect-h-4 bg-gray-800">
-                        <img src="Chamara Sala.jpg" alt="Chamara Sala" class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100">
-                    </div>
+                <!-- Team Member 2 (Center) -->
+                <div data-aos="fade-up" data-aos-delay="200" class="group relative rounded-3xl overflow-hidden cursor-pointer h-96">
+                    <img src="Chamara Sala.jpg" onerror="this.src='https://placehold.co/400x500/1f2937/ffffff?text=Chamara+Sala'" alt="Chamara Sala" class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                         <h3 class="text-xl font-bold text-white">Chamara Sala</h3>
-                        <p class="text-primary text-sm font-medium mb-3">Founder & CEO</p>
+                        <p class="text-primary text-sm font-medium mb-3">Manager</p>
                         <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
                             <a href="#" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-primary transition-colors"><i class="fab fa-linkedin-in text-sm"></i></a>
                             <a href="#" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-primary transition-colors"><i class="fab fa-twitter text-sm"></i></a>
@@ -425,14 +768,12 @@
                     </div>
                 </div>
 
-                <!-- Team Member 3 -->
-                <div data-aos="fade-up" data-aos-delay="300" class="group relative rounded-3xl overflow-hidden cursor-pointer">
-                    <div class="aspect-w-3 aspect-h-4 bg-gray-800">
-                        <img src="Sandaru Sadewa.jpg" alt="Sandaru Sadewa" class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100">
-                    </div>
+                <!-- Team Member 3 (Right) -->
+                <div data-aos="fade-up" data-aos-delay="300" class="group relative rounded-3xl overflow-hidden cursor-pointer h-96">
+                    <img src="Sandaru Sadewa.jpg" onerror="this.src='https://placehold.co/400x500/1f2937/ffffff?text=Sandaru+Sadewa'" alt="Sandaru Sadewa" class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                         <h3 class="text-xl font-bold text-white">Sandaru Sadewa</h3>
-                        <p class="text-blue-400 text-sm font-medium mb-3">Digital Media strategist</p>
+                        <p class="text-blue-400 text-sm font-medium mb-3">Digital Media Strategist</p>
                         <div class="flex space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
                             <a href="#" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-blue-500 transition-colors"><i class="fab fa-tiktok text-sm"></i></a>
                             <a href="#" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-blue-500 transition-colors"><i class="fab fa-instagram text-sm"></i></a>
@@ -443,7 +784,7 @@
         </div>
     </section>
 
-    <!-- Contact Us Section (අපව සම්බන්ධ කරගන්න) -->
+    <!-- Contact Us Section -->
     <section id="contact" class="py-24 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row gap-16 bg-darkCard/40 rounded-3xl p-8 border border-gray-800 backdrop-blur-md">
@@ -486,7 +827,7 @@
 
                 <!-- Contact Form -->
                 <div class="w-full lg:w-7/12" data-aos="fade-left">
-                    <form class="space-y-6" onsubmit="event.preventDefault(); alert('Message sent successfully! We will contact you soon.');">
+                    <form id="contactForm" class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-sm font-medium text-gray-400 mb-2">Your Name</label>
@@ -509,6 +850,11 @@
                             Send Message
                         </button>
                     </form>
+
+                    <!-- Custom Success Message Box -->
+                    <div id="successMessage" class="hidden mt-6 p-4 rounded-xl bg-green-500/20 border border-green-500/50 text-green-300 text-center">
+                        <i class="fas fa-check-circle mr-2"></i> Message sent successfully! We will contact you soon.
+                    </div>
                 </div>
             </div>
         </div>
@@ -569,6 +915,19 @@
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
             });
+        });
+
+        // Contact Form Submission
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            successMessage.classList.remove('hidden');
+            contactForm.reset();
+            setTimeout(() => {
+                successMessage.classList.add('hidden');
+            }, 5000);
         });
     </script>
 </body>
